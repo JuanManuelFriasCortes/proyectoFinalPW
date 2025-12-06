@@ -97,4 +97,3 @@ export const removeUserCoupon = async (userId) => {
   await query(sql, [userId]);
 };
 
-export default pool;

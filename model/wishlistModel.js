@@ -59,4 +59,3 @@ export const countWishlistItems = async (userId) => {
   return results[0].total;
 };
 
-export default pool;

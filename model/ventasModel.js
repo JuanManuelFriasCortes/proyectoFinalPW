@@ -79,4 +79,3 @@ export const registrarVenta = async (ventaData) => {
   return result.insertId;
 };
 
-export default pool;

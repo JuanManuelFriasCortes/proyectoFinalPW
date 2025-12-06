@@ -114,4 +114,3 @@ export const getProductStats = async () => {
   return results[0];
 };
 
-export default pool;
