@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlockWorld: Todo en legos</title>
+    <link rel="icon" type="image/x-icon" href="imagenes/logo.ico">
+    <link rel="stylesheet" href="styles/estilos.css">
+    <style>
+        .barra-superior {
+            background: url("imagenes/fondoPest.jpeg") center/cover no-repeat;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            padding: 0 10px;
+            font-family: Arial, sans-serif;
+        }
+    </style> 
+</head>
+<body>
+    
+    <div class="barra-superior">
+        <p>Envíos gratuitos en cada artículo con un valor superior a $1200</p>
+    </div>
+
+    <header class="header-red">
+        <div class="izq">
+            <a href="index.html">
+                <img src="imagenes/LogoBlockWorld.png" class="logo" alt="logo">
+            </a>
+
+            <div class="logo-texto">
+                <h1 class="titulo-tienda">BlockWorld</h1>
+                <p class="slogan-tienda">Construye sueños, pieza por pieza</p>
+            </div>
+        </div>
+
+        <div class="der">
+            <button class="btn-vender">Panel Admin</button>
+
+            <a href="wishlist.html" class="grupo-fav" style="cursor: pointer; position: relative; text-decoration: none;">
+                 <img src="imagenes/libro.png" class="icono" alt="favoritos" title="Lista de Deseos">
+                <span id="wishlist-count" style="
+                    position: absolute;
+                    top: -5px;
+                    right: -5px;
+                    background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
+                    color: white;
+                    border-radius: 50%;
+                    min-width: 20px;
+                    height: 20px;
+                    display: none;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 11px;
+                    font-weight: bold;
+                    padding: 2px 5px;
+                    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+                ">0</span>
+            </a>
+           
+            <div class="grupo-carrito">
+                <span id="cart-count" style="font-weight:bold; margin-left:4px;">0</span>
+                <a href="carrito.html">
+                    <img src="imagenes/bolsa.png" class="icono" alt="bolsa">
+                </a>
+            </div>
+
+            <div class="nav-right">
+            <span id="userName" class="user-name"></span>
+            
+            <div id="auth-buttons">
+                <button id="loginBtn" class="icon-btn" title="Login">
+                    <span class="login-icon">
+                        <img src="imagenes/gente.png" class="icono" alt="iniciar-sesion">
+                    </span>
+                </button>
+                <button id="registrarBtn" class="icon-btn" title="Registrarse" style="visibility: hidden;">
+                </button>
+
+            </div>
+            
+            <button id="logoutBtn" class="icon-btn" title="Cerrar Sesión" style="display: none;">
+                <span class="login-icon">
+                    <img src="imagenes/perfil.png" class="icono" alt="cerrar-sesion">
+                </span>
+            </button>
+        </div>
+            
+        </div>
+    </header>
+
+    <nav class="menu-inferior">
+        <a href="productos.html">Productos</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="preguntasFrecuentes.html">Preguntas</a>
+        <a href="contactanos.html">Contáctanos</a>
+    </nav>
+    <div class="accessibility-bar">
+        <div class="accessibility-bar-container">
+            <div class="accessibility-control">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="themeToggle">
+                    <span class="toggle-slider">
+                        <span class="toggle-icon sun">☀️</span>
+                        <span class="toggle-icon moon">🌙</span>
+                    </span>
+                </label>
+            </div>
+
+            <div class="accessibility-separator"></div>
+
+            <div class="accessibility-control">
+                <label class="control-label">Espaciado</label>
+                <select id="spacingSelect" class="accessibility-select">
+                    <option value="narrow">Estrecho</option>
+                    <option value="normal" selected>Normal</option>
+                    <option value="wide">Amplio</option>
+                </select>
+            </div>
+
+            <div class="accessibility-separator"></div>
+
+            <div class="accessibility-control">
+                <label class="control-label">Tamaño de Texto</label>
+                <select id="fontSizeSelect" class="accessibility-select">
+                    <option value="small">Chico</option>
+                    <option value="medium" selected>Mediano</option>
+                    <option value="large">Grande</option>
+                </select>
+            </div>
+
+            <button id="resetAllAccessibility" class="reset-accessibility-btn" title="Restablecer todo">
+                <img src="imagenes/flechas.png" class="icono" alt="bolsa">
+            </button>
+        </div>
+    </div>
+    <main class="main-content" style="padding:40px; font-family:Arial; text-align:center;">
+        <div class="carousel-container">
+            <div class="carousel-slides">
+                <div class="carousel-slide">
+                    <img src="imagenes/promo1.png" alt="Banner 1">
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="imagenes/promo2.png" alt="Banner 2">
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="imagenes/promo3.png" alt="Banner 3">
+                </div>
+            </div>
+
+            <button class="carousel-arrow left" onclick="moveSlide(-1)">❮</button>
+            <button class="carousel-arrow right" onclick="moveSlide(1)">❯</button>
+
+            <div class="carousel-indicators">
+                <span class="indicator active" onclick="goToSlide(0)"></span>
+                <span class="indicator" onclick="goToSlide(1)"></span>
+                <span class="indicator" onclick="goToSlide(2)"></span>
+            </div>
+        </div>
+
+        <script>
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.carousel-slide');
+            const indicators = document.querySelectorAll('.indicator');
+            const totalSlides = slides.length;
+            const carouselSlides = document.querySelector('.carousel-slides');
+            const container = document.querySelector('.carousel-container');
+            let autoplayInterval;
+
+            function showSlide(index) {
+                if (index >= totalSlides) {
+                    currentSlide = 0;
+                } else if (index < 0) {
+                    currentSlide = totalSlides - 1;
+                } else {
+                    currentSlide = index;
+                }
+
+                const offset = -currentSlide * 100;
+                carouselSlides.style.transform = `translateX(${offset}%)`;
+
+                indicators.forEach((indicator, i) => {
+                    indicator.classList.toggle('active', i === currentSlide);
+                });
+            }
+
+            function moveSlide(direction) {
+                showSlide(currentSlide + direction);
+                resetAutoplay();
+            }
+
+            function goToSlide(index) {
+                showSlide(index);
+                resetAutoplay();
+            }
+
+            function startAutoplay() {
+                autoplayInterval = setInterval(() => {
+                    showSlide(currentSlide + 1);
+                }, 6000); 
+            }
+
+            function stopAutoplay() {
+                clearInterval(autoplayInterval);
+            }
+
+            function resetAutoplay() {
+                stopAutoplay();
+                startAutoplay();
+            }
+
+            container.addEventListener('mouseenter', stopAutoplay);
+            container.addEventListener('mouseleave', startAutoplay);
+
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            container.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                stopAutoplay();
+            });
+
+            container.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+                startAutoplay();
+            });
+
+            function handleSwipe() {
+                if (touchStartX - touchEndX > 50) {
+                    moveSlide(1);
+                } else if (touchEndX - touchStartX > 50) {
+                    moveSlide(-1);
+                }
+            }
+
+            startAutoplay();
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    moveSlide(-1);
+                } else if (e.key === 'ArrowRight') {
+                    moveSlide(1);
+                }
+            });
+        </script>
+
+        <h1>Explora nuestra colección de sets LEGO:<br>desde novedades hasta piezas difíciles de encontrar.</h1>
+
+        <section class="seccion-productos-baratos">
+            <h4 class="titulo-seccion-baratos">Productos Más Económicos</h4>
+            
+            <div class="carrusel-baratos-wrapper">
+                <button class="barato-arrow barato-arrow-left" id="barato-arrow-left">
+                    ❮
+                </button>
+                
+                <div id="productos-baratos-container" class="productos-baratos-grid">
+                    <div style="text-align: center; padding: 40px;">
+                        <p style="font-size: 18px; color: #666;">Cargando productos...</p>
+                    </div>
+                </div>
+                
+                <button class="barato-arrow barato-arrow-right" id="barato-arrow-right">
+                    ❯
+                </button>
+            </div>
+        </section>
+
+        <section class="seccion-marcas">
+            <h2 class="titulo-marcas">Productos Originales y de Calidad</h2>
+            <p class="subtitulo-marcas">Descubre las marcas colaboradoras de lego y más!!!</p>
+
+            <div class="marcas-carousel-container">
+                <div class="marcas-carousel-track" id="marcas-track">
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion-bienvenida">
+            <div class="bienvenida-texto" id="bienvenida-texto">
+                Te damos la bienvenida a <strong>BlockWorld</strong>, un proyecto escolar creado para simular una tienda especializada en 
+                sets LEGO importados y ofrecidos al mejor precio. Aquí podrás explorar una amplia variedad de 
+                construcciones, colecciones y modelos pensados para fans de todas las edades: desde quienes apenas 
+                comienzan a armar sus primeros sets, hasta coleccionistas que buscan piezas especiales o difíciles 
+                de encontrar.
+                <br><br>
+                Nuestro objetivo es mostrar cómo sería una experiencia de compra completa, visual y organizada para quienes 
+                disfrutan de construir, coleccionar y expresar su creatividad con LEGO. Aunque esta página forma parte de un 
+                proyecto académico y no realiza ventas reales, está diseñada para presentar de forma clara y atractiva los 
+                productos, tal y como lo haría una tienda profesional.
+                <br><br>
+                Explora nuestras categorías, descubre sets emblemáticos y conoce las líneas más populares, todo dentro de un 
+                entorno creado únicamente con fines educativos.
+            </div>
+            <button class="mostrar-menos-btn" id="toggle-btn" onclick="toggleTexto()">Mostrar Menos</button>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-contenido">
+
+            <div class="footer-col">
+                <h3>BlockWorld</h3>
+                <ul>
+                    <li><a href="nosotros.html">Sobre nosotros</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Ayuda</h3>
+                <ul>
+                    <li><a href="contactanos.html">Contacto</a></li>
+                    <li><a href="preguntasFrecuentes.html">Preguntas frecuentes</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Usuarios</h3>
+                <ul>
+                    <li><a href="carrito.html">Carrito</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="wishlist.html">Lista de deseos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social-logo">
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/blockworld14?igsh=MXF5bXo0Mm9uNDhm" target="_blank"><img src="imagenes/instagram.png" alt="Instagram"></a>
+                    <a href="https://www.facebook.com/profile.php?id=61584811431929" target="_blank"><img src="imagenes/facebook.png" alt="Facebook"></a>
+                    <a href="https://pin.it/5NZEzK4X0" target="_blank"><img src="imagenes/pinterest.png" alt="Pinterest"></a>
+                </div>
+
+                <div class="footer-logo-abajo">
+                    <img src="imagenes/LogoBlockWorld.png" alt="Logo BlockWorld">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-pagos">
+            <p>Pagos 100% seguros con</p>
+            <div class="footer-pagos-img">
+                <img src="imagenes/dinero.png" alt="PayPal">
+                <img src="imagenes/herramienta.png" alt="Mastercard">
+                <img src="imagenes/simbolos.png" alt="VISA">
+                <img src="imagenes/simbolo.png" alt="Apple Pay">
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL LOGIN  -->
+    <div id="loginModal" class="modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+            <span class="close" id="closeModalLogin" title="Cerrar">&times;</span>
+            <h2 id="loginTitle">Iniciar Sesión</h2>
+
+            <form id="formLogin">
+                <input type="text" id="login" placeholder="Usuario o Email" required autocomplete="username">
+                <input type="password" id="password" placeholder="Contraseña" required autocomplete="current-password">
+
+                <!--CAPTCHA-->
+                <div class="captcha-container">
+                    <label id="captchaQuestion" class="captcha-question">Cargando CAPTCHA...</label>
+                    <div id="captchaGrid" class="captcha-grid"></div>
+                    <button type="button" id="refreshCaptcha" class="refresh-btn" title="Recargar CAPTCHA">🔄 Nuevo CAPTCHA</button>
+                </div>
+
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+
+            <p class="modal-footer">
+                ¿No tienes cuenta? <a href="#" id="linkRegistro">Regístrate aquí</a><br>
+                <a href="#" id="linkOlvideContrasena">¿Olvidaste tu contraseña?</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- MODAL REGISTRO -->
+    <div id="registroModal" class="modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="regTitle">
+            <span class="close" id="closeModalRegistro" title="Cerrar">&times;</span>
+            <h2 id="regTitle">Crear Cuenta Nueva</h2>
+
+            <form id="formRegistro">
+                <input type="text" id="regNombre" placeholder="Nombre completo" required>
+                <input type="text" id="regNombreCuenta" placeholder="Nombre de usuario" required>
+                <input type="email" id="regCorreo" placeholder="Correo electrónico" required>
+                <input type="password" id="regContrasena" placeholder="Contraseña (mínimo 6 caracteres)" required>
+                <input type="password" id="regContrasena2" placeholder="Confirmar contraseña" required>
+
+                <select id="regPais" required>
+                    <option value="">Selecciona tu país</option>
+                    <option value="México">México</option>
+                    <option value="Estados Unidos">Estados Unidos</option>
+                    <option value="España">España</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Perú">Perú</option>
+                </select>
+
+                <button type="submit">Registrarse</button>
+            </form>
+
+            <p class="modal-footer">
+                ¿Ya tienes cuenta? <a href="#" id="linkLogin">Inicia sesión aquí</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="productos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="app.js"></script>
+    <script src="wishlist.js"></script>
+    <script src="accesibilidad.js"></script>
+</body>
+</html>

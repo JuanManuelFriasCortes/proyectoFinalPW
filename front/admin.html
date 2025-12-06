@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador</title>
+    <link rel="icon" type="image/x-icon" href="imagenes/logo3.ico">
+    <link rel="stylesheet" href="/front/styles/estilos.css">
+    <link rel="stylesheet" href="/front/styles/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+</head>
+<body>
+    <header class="header-red">
+        <div class="izq">
+            <a href="index.html">
+                <img src="imagenes/LogoBlockWorld.png" class="logo" alt="logo">
+            </a>
+
+            <div class="logo-texto">
+                <h1 class="titulo-tienda">BlockWorld</h1>
+                <p class="slogan-tienda">Construye sueños, pieza por pieza</p>
+            </div>
+        </div>
+
+        <div class="der">
+            <div id="auth-buttons">
+                <span id="userName" class="user-name"></span>
+                <button id="logoutBtn" class="icon-btn" title="Cerrar Sesión">
+                    <span class="login-icon"><img src="imagenes/perfil.png" class="icono" alt="cerrar-sesion"></span>
+                </button>           
+                <button id="registrarBtn" class="icon-btn" title="Registrarse" style="visibility: hidden;">
+                </button>
+            </div>
+            
+            <button id="logoutBtn" class="icon-btn" title="Cerrar Sesión" style="display: none;">
+                <span class="login-icon">
+                    <img src="imagenes/perfil.png" class="icono" alt="cerrar-sesion">
+                </span>
+            </button>
+        </div>
+            
+        </div>
+    </header>
+
+    <nav class="menu-inferior">
+        <a href="index.html">Volver a inicio</a>
+    </nav>
+
+    <nav class="navbar">
+        <div class="nav-right">
+            <span id="userName" class="user-name"></span>
+        </div>
+    </nav>
+
+    <main class="admin-container">
+        <div class="admin-header">
+            <h1>Panel de Administrador</h1>
+            <p>Bienvenido al panel de control</p>
+        </div>
+
+        <div class="admin-menu">
+            <button class="admin-menu-btn active" data-section="productos">
+                Gestión de Productos
+            </button>
+            <button class="admin-menu-btn" data-section="ventas">
+                Reportes de Ventas
+            </button>
+            <button class="admin-menu-btn" data-section="inventario">
+                Inventario
+            </button>
+        </div>
+
+        <div id="section-productos" class="admin-section active">
+            <h2>Gestión de Productos</h2>
+            <p class="section-description">Administra el catálogo de productos de la tienda</p>
+            
+            <button id="btnNuevoProducto" class="btn btn-primary">
+                <img src="imagenes/mas.png" class="btn-icon-prods" alt="cerrar-sesion"> Agregar Nuevo Producto
+            </button>
+            
+            <div id="tablaProductosContainer" style="margin-top: 20px;">
+            </div>
+        </div>
+
+        <div id="section-ventas" class="admin-section">
+            <h2>Reportes de Ventas</h2>
+            <p class="section-description">Visualiza las estadísticas de ventas</p>
+            
+            <div id="ventasContainer">
+            </div>      
+        </div>
+
+        <div id="section-inventario" class="admin-section">
+            <h2>Inventario</h2>
+            <p class="section-description">Consulta el inventario disponible por categoría</p>
+            
+            <div id="inventarioContainer">
+            </div>
+        </div>
+    </main>
+
+    <div id="modalProducto" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close" id="closeModalProducto">&times;</span>
+            <h2 id="tituloModal">Agregar Nuevo Producto</h2>
+            <form id="formProducto">
+                <input type="hidden" id="productoId">
+                
+                <div class="form-group">
+                    <label for="productoNombre">Nombre del Producto *</label>
+                    <input type="text" id="productoNombre" required placeholder="Ej: LEGO Technic Bugatti">
+                </div>
+                
+                <div class="form-group">
+                    <label for="productoDescripcion">Descripción *</label>
+                    <textarea id="productoDescripcion" required placeholder="Descripción detallada del producto"></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="productoPrecio">Precio (USD) *</label>
+                        <input type="number" id="productoPrecio" step="0.01" min="0" required placeholder="0.00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productoDisponibilidad">Disponibilidad (unidades) *</label>
+                        <input type="number" id="productoDisponibilidad" min="0" required placeholder="0">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productoCategoria">Categoría *</label>
+                    <select id="productoCategoria" required>
+                        <option value="">Selecciona una categoría</option>
+                        <option value="Technic">Technic</option>
+                        <option value="Ideas">Ideas</option>
+                        <option value="Marcas">Marcas</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productoImagen">URL de la Imagen</label>
+                    <input type="url" id="productoImagen" placeholder="https://ejemplo.com/imagen.jpg">
+                    <small>Si no agregas una URL, se usará una imagen por defecto</small>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    Guardar Producto
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
