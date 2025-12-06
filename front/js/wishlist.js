@@ -1,6 +1,6 @@
 // wishlist.js - Funcionalidad del frontend para lista de deseos
 
-const API_BASE_URL = 'https://proyectofinalpw-ny66.onrender.com/api';
+const API_BASE_URL = 'http://localhost:5000/api';
 
 // Función para agregar producto a wishlist
 async function agregarAWishlist(productoId) {

@@ -1,4 +1,4 @@
-const API_URL = 'https://proyectofinalpw-ny66.onrender.com/api';
+const API_URL = 'http://localhost:5000/api';
 
 function contacto(formContacto){
   if (formContacto) {

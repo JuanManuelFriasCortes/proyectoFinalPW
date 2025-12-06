@@ -1,5 +1,5 @@
 // front/productos.js
-const API_URL = 'https://proyectofinalpw-ny66.onrender.com/api';
+
 // Variables globales
 let todosLosProductos = [];
 let productosFiltrados = [];
