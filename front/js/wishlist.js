@@ -103,7 +103,6 @@ async function cargarWishlist() {
   }
 }
 
-// Función para mostrar productos de wishlist en HTML
 function mostrarWishlist(productos) {
   const container = document.getElementById('wishlist-container');
   
@@ -123,7 +122,12 @@ function mostrarWishlist(productos) {
   let html = '<div class="wishlist-grid">';
   
   productos.forEach(producto => {
-    const disponible = producto.disponibilidad > 0;
+    // Convertir precio a número de forma segura
+    const precio = parseFloat(producto.precio) || 0;
+    
+    // Convertir disponibilidad a número
+    const disponibilidad = parseInt(producto.disponibilidad) || 0;
+    const disponible = disponibilidad > 0;
     
     html += `
       <div class="wishlist-item">
@@ -131,7 +135,7 @@ function mostrarWishlist(productos) {
         <div class="wishlist-info">
           <h4>${producto.nombre}</h4>
           <p class="wishlist-categoria">${producto.categoria}</p>
-          <p class="wishlist-precio">$${producto.precio.toFixed(2)}</p>
+          <p class="wishlist-precio">$${precio.toFixed(2)}</p>
           ${disponible 
             ? `<span class="badge-disponible">✓ Disponible</span>` 
             : `<span class="badge-agotado">✗ No disponible</span>`
@@ -165,8 +169,11 @@ async function actualizarContadorWishlist() {
     
     const data = await response.json();
     
-    if (data.success && data.count > 0) {
-      badge.textContent = data.count;
+    // Verificar si hay total o count en la respuesta
+    const count = data.total || data.count || 0;
+    
+    if (data.success && count > 0) {
+      badge.textContent = count;
       badge.style.display = 'inline-block';
     } else {
       badge.style.display = 'none';
