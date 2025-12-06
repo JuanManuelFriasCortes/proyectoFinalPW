@@ -4,13 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const pool = mysql.createPool({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'ecommerce_db',
-  port: process.env.DB_PORT || 3306
-});
+import pool, { query } from './db.js'; // <-- usamos el pool y query globales
 
 const query = (sql, params) => {
   return new Promise((resolve, reject) => {
@@ -111,4 +105,3 @@ export const removeUserCoupon = async (userId) => {
   await query(sql, [userId]);
 };
 
-export default pool;

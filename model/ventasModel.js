@@ -4,13 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const pool = mysql.createPool({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'tiendalego',
-  port: process.env.DB_PORT || 3306
-});
+import pool, { query } from './db.js'; // <-- usamos el pool y query globales
 
 const query = (sql, params) => {
   return new Promise((resolve, reject) => {
@@ -93,4 +87,3 @@ export const registrarVenta = async (ventaData) => {
   return result.insertId;
 };
 
-export default pool;
