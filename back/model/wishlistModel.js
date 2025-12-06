@@ -4,22 +4,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const pool = mysql.createPool({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'tiendalego',
-  port: process.env.DB_PORT || 3306
-});
+import { query } from "./db.js";
 
-const query = (sql, params) => {
-  return new Promise((resolve, reject) => {
-    pool.query(sql, params, (error, results) => {
-      if (error) return reject(error);
-      resolve(results);
-    });
-  });
-};
 
 // Agregar producto a la wishlist
 export const addToWishlist = async (userId, productId) => {
