@@ -1,4 +1,3 @@
-const API_URL = 'https://proyectofinalpw-ny66.onrender.com/api';
 
 function contacto(formContacto){
   if (formContacto) {
