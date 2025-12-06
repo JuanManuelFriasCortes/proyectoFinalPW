@@ -6,14 +6,6 @@ dotenv.config();
 
 import pool, { query } from './db.js'; // <-- usamos el pool y query globales
 
-const query = (sql, params) => {
-  return new Promise((resolve, reject) => {
-    pool.query(sql, params, (error, results) => {
-      if (error) return reject(error);
-      resolve(results);
-    });
-  });
-};
 
 // ✅ FUNCIÓN SIMPLE: Solo asegurar que haya una imagen
 function asegurarImagen(productos) {

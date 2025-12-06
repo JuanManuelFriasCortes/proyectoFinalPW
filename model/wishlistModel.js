@@ -6,15 +6,6 @@ dotenv.config();
 
 import pool, { query } from './db.js'; // <-- usamos el pool y query globales
 
-const query = (sql, params) => {
-  return new Promise((resolve, reject) => {
-    pool.query(sql, params, (error, results) => {
-      if (error) return reject(error);
-      resolve(results);
-    });
-  });
-};
-
 // Agregar producto a la wishlist
 export const addToWishlist = async (userId, productId) => {
   // Primero verificar si ya existe
