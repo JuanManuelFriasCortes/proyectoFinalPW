@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nostros | BlockWorld</title>
+    <title>Carrito | BlockWorld</title>
     <link rel="icon" type="image/x-icon" href="imagenes/logo.ico">
-    <link rel="stylesheet" href="styles/estPreguntas.css">
+    <link rel="stylesheet" href="styles/estilos.css">
+    <link rel="stylesheet" href="styles/estCarrito.css">
+    <link rel="stylesheet" href="styles/estProductos.css">
     <style>
         .barra-superior {
             background: url("imagenes/fondoPest.jpeg") center/cover no-repeat;
@@ -21,7 +23,7 @@
     </style>
 </head>
 <body>
-
+ 
         <header class="header-red">
         <div class="izq">
             <a href="index.html">
@@ -37,11 +39,26 @@
         <div class="der">
             <button class="btn-vender">Panel Admin</button>
 
-            <div class="grupo-fav">
-                <a href="wishlist.html">
-                    <img src="imagenes/libro.png" class="icono" alt="favoritos">
-                </a>
-            </div>
+            <a href="wishlist.html" class="grupo-fav" style="cursor: pointer; position: relative; text-decoration: none;">
+                 <img src="imagenes/libro.png" class="icono" alt="favoritos" title="Lista de Deseos">
+                <span id="wishlist-count" style="
+                    position: absolute;
+                    top: -5px;
+                    right: -5px;
+                    background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
+                    color: white;
+                    border-radius: 50%;
+                    min-width: 20px;
+                    height: 20px;
+                    display: none;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 11px;
+                    font-weight: bold;
+                    padding: 2px 5px;
+                    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+                ">0</span>
+            </a>
 
             <div class="grupo-carrito">
                 <span id="cart-count" style="font-weight:bold; margin-left:4px;">0</span>
@@ -76,10 +93,12 @@
 
     <nav class="menu-inferior">
         <a href="index.html">Inicio</a>
+        <a href="productos.html">Productos</a>
         <a href="nosotros.html">Nosotros</a>
         <a href="preguntasFrecuentes.html">Preguntas</a>
         <a href="contactanos.html">Contáctanos</a>
     </nav>
+
     <div class="accessibility-bar">
         <div class="accessibility-bar-container">
             <div class="accessibility-control">
@@ -119,54 +138,118 @@
             </button>
         </div>
     </div>
-    <main class="main-content">
-       <section class="faq">
-        <h2>Preguntas Frecuentes</h2>
-        <p class="faq__intro">¿Tienes dudas? Aquí respondemos las más comunes sobre tus pedidos y nuestra tienda.</p>
+    
+    <main class="cart-main">
+        <div class="cart-container">
+            <div class="cart-left">
+                <h2>Mi carrito</h2>
+                <div id="carrito-contenedor" class="cart-items-list">
+                    <p style="text-align:center; color:#777; padding: 40px;">Tu carrito está vacío</p>
+                </div>
+            </div>
 
-        <div class="faq__item">
-            <button class="faq__question">¿En cuántos días hábiles llega mi pedido?</button>
-            <div class="faq__answer">Generalmente entre 7 y 14 días hábiles, dependiendo de tu ubicación.</div>
-        </div>
+            <aside class="sidebar">
+                <div class="order-summary">
+                    <h3>Resumen del pedido</h3>
 
-        <div class="faq__item">
-            <button class="faq__question">¿Qué pasa si mi pedido llega incompleto o dañado?</button>
-            <div class="faq__answer">Puedes reportarlo y te enviaremos las piezas faltantes o un reemplazo.</div>
-        </div>
+                    <div class="summary-line">
+                        <span>Calcular envío</span>
+                        <span></span>
+                    </div>
 
-        <div class="faq__item">
-            <button class="faq__question">¿Qué métodos de pago aceptan?</button>
-            <div class="faq__answer">Tarjetas de crédito/débito.</div>
-        </div>
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span id="carrito-total">$0.00</span>
+                    </div>
 
-        <div class="faq__item">
-            <button class="faq__question">¿Es seguro comprar en este sitio?</button>
-            <div class="faq__answer">Sí, usamos certificados SSL y pasarelas de pago confiables para proteger tus datos.</div>
+                    <button class="btn-checkout" id="btnCheckout" disabled>Finalizar compra</button>
+                </div>
+            </aside>
         </div>
-
-        <div class="faq__item">
-            <button class="faq__question">¿Puedo pagar a meses sin intereses?</button>
-            <div class="faq__answer">Sí, en compras mayores a cierto monto con tarjetas participantes.</div>
-        </div>
-
-        <div class="faq__item">
-            <button class="faq__question">¿Los sets son originales?</button>
-            <div class="faq__answer">Sí, todos nuestros productos cuentan con garantía de autenticidad.</div>
-        </div>
-
-        <div class="faq__item">
-            <button class="faq__question">¿Cada cuánto se actualizan los productos disponibles?</button>
-            <div class="faq__answer">Todas las semanas añadimos nuevos sets y piezas destacadas.</div>
-        </div>
-
-        <div class="faq__item">
-            <button class="faq__question">¿Dónde puedo comunicarme si tengo dudas?</button>
-            <div class="faq__answer">En la sección Contacto encontrarás correo, chat y teléfono de atención al cliente.</div>
-        </div>
-        </section>
     </main>
 
-    <footer class="footer">
+    <!-- Modal checkout-->
+    <div id="checkoutModal" class="modal modal-checkout">
+        <div class="modal-content-checkout">
+            <span id="cerrarCheckout" class="close">&times;</span>
+
+            <h2>Finalizar Compra</h2>
+
+            <h3>Datos del Envío</h3>
+            <div class="checkout-section">
+                <input type="text" id="env-nombre" placeholder="Nombre completo" required>
+                <input type="text" id="env-direccion" placeholder="Dirección completa" required>
+                <input type="text" id="env-ciudad" placeholder="Ciudad" required>
+                <input type="text" id="env-cp" placeholder="Código Postal" required>
+                
+                <select id="env-pais" required>
+                    <option value="">Selecciona tu país</option>
+                    <option value="México">México</option>
+                    <option value="Estados Unidos">Estados Unidos</option>
+                    <option value="España">España</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Perú">Perú</option>
+                </select>
+                
+                <input type="text" id="env-telefono" placeholder="Teléfono (10 dígitos)" required>
+            </div>
+
+            <h3>Método de Pago</h3>
+            <select id="pago-metodo" required>
+                <option value="">Selecciona una opción</option>
+                <option value="tarjeta">💳 Tarjeta de Crédito/Débito</option>
+                <option value="transferencia">🏦 Transferencia Bancaria</option>
+                <option value="oxxo">🏪 OXXO</option>
+            </select>
+
+            <div id="form-tarjeta" class="metodo oculto">
+                <h4>Datos de la Tarjeta</h4>
+                <input type="text" id="tarjeta-num" placeholder="Número de tarjeta (16 dígitos)" maxlength="16" pattern="\d{16}">
+                <input type="text" id="tarjeta-titular" placeholder="Nombre del titular">
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="tarjeta-fecha" placeholder="MM/AA" maxlength="5" pattern="\d{2}/\d{2}">
+                    <input type="text" id="tarjeta-cvv" placeholder="CVV (3 dígitos)" maxlength="3" pattern="\d{3}">
+                </div>
+            </div>
+
+            <div id="form-transferencia" class="metodo oculto">
+                <h4>Información para Transferencia</h4>
+                <p><strong>Banco:</strong> Banco BlockWorld S.A.</p>
+                <p><strong>CLABE:</strong> 123 456 789 000 111 222</p>
+                <p><strong>Beneficiario:</strong> BlockWorld Store</p>
+                <input type="text" id="trans-comprobante" placeholder="Nombre del titular que realizará la transferencia" required>
+                <small style="color: #666;">*Una vez realizada la transferencia, envía tu comprobante al correo: pagos@blockworld.com</small>
+            </div>
+
+            <div id="form-oxxo" class="metodo oculto">
+                <h4>Pago en OXXO</h4>
+                <p>Acude a tu OXXO más cercano y menciona que realizarás un pago de servicio.</p>
+                <p>Proporciona el siguiente código de pago:</p>
+                <div style="background: #f0f0f0; padding: 15px; text-align: center; border-radius: 5px; margin: 10px 0;">
+                    <h3 style="margin: 0; color: #d32f2f;" id="oxxo-code">0000 0000 0000 0000</h3>
+                </div>
+                <small style="color: #666;">*El código estará disponible por 72 horas</small>
+            </div>
+
+            <h3>Cupón de Descuento</h3>
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <input type="text" id="cupon-input" placeholder="Ingresa tu cupón (opcional)" style="width: 70%;"> 
+                <button id="btnAplicarCupon" class="btn-apply" style="flex-grow: 1;">Aplicar</button>
+            </div>
+
+            <div id="cupon-info" class="cupon-info" style="display: none; background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+            </div>
+
+            <button id="btnConfirmarCompra" class="btn-confirmar">
+                Confirmar y Procesar Compra
+            </button>
+        </div>
+    </div>
+
+
+        <footer class="footer">
         <div class="footer-contenido">
 
             <div class="footer-col">
@@ -195,9 +278,9 @@
 
             <div class="footer-social-logo">
                 <div class="footer-social">
-                    <a href="#"><img src="imagenes/instagram.png" alt="Instagram"></a>
-                    <a href="#"><img src="imagenes/facebook.png" alt="Facebook"></a>
-                    <a href="#"><img src="imagenes/pinterest.png" alt="Pinterest"></a>
+                    <a href="https://www.instagram.com/blockworld14?igsh=MXF5bXo0Mm9uNDhm" target="_blank"><img src="imagenes/instagram.png" alt="Instagram"></a>
+                    <a href="https://www.facebook.com/profile.php?id=61584811431929" target="_blank"><img src="imagenes/facebook.png" alt="Facebook"></a>
+                    <a href="https://pin.it/5NZEzK4X0" target="_blank"><img src="imagenes/pinterest.png" alt="Pinterest"></a>
                 </div>
 
                 <div class="footer-logo-abajo">
@@ -278,20 +361,10 @@
         </div>
     </div>
 
-    <script>
-        const items = document.querySelectorAll('.faq__item');
-
-        items.forEach(item => {
-            const question = item.querySelector('.faq__question');
-            question.addEventListener('click', () => {
-            item.classList.toggle('active');
-            });
-        });
-    </script>
-
-    <script src="productos.js"></script>
+    <script src="js/productos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="app.js"></script>
-    <script src="accesibilidad.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/accesibilidad.js"></script>
 </body>
 </html>

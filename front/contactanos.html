@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito | BlockWorld</title>
+    <title>Contáctanos | BlockWorld</title>
     <link rel="icon" type="image/x-icon" href="imagenes/logo.ico">
-    <link rel="stylesheet" href="styles/estilos.css">
-    <link rel="stylesheet" href="styles/estCarrito.css">
-    <link rel="stylesheet" href="styles/estProductos.css">
+    <link rel="stylesheet" href="styles/estContacto.css">
     <style>
         .barra-superior {
             background: url("imagenes/fondoPest.jpeg") center/cover no-repeat;
@@ -20,10 +18,24 @@
             padding: 0 10px;
             font-family: Arial, sans-serif;
         }
+
+        .contact-container {
+            background: url('imagenes/fondoForm.png') center/cover no-repeat;
+            min-height: 600px;
+            padding: 60px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 60px;
+            max-width: 1400px;
+            margin: 40px auto;
+            border-radius: 15px;
+            position: relative;
+        }
     </style>
 </head>
 <body>
- 
+
         <header class="header-red">
         <div class="izq">
             <a href="index.html">
@@ -96,9 +108,7 @@
         <a href="productos.html">Productos</a>
         <a href="nosotros.html">Nosotros</a>
         <a href="preguntasFrecuentes.html">Preguntas</a>
-        <a href="contactanos.html">Contáctanos</a>
     </nav>
-
     <div class="accessibility-bar">
         <div class="accessibility-bar-container">
             <div class="accessibility-control">
@@ -139,116 +149,37 @@
         </div>
     </div>
     
-    <main class="cart-main">
-        <div class="cart-container">
-            <div class="cart-left">
-                <h2>Mi carrito</h2>
-                <div id="carrito-contenedor" class="cart-items-list">
-                    <p style="text-align:center; color:#777; padding: 40px;">Tu carrito está vacío</p>
-                </div>
+<main class="main-content">
+    <div class="contact-container">
+        <h1>Contáctanos en minutos.</h1>
+        <ul class="contact-benefits">
+            <li>✓ Respuesta inmediata</li>
+            <li>✓ Atención personalizada</li>
+            <li>✓ Servicio garantizado</li>
+        </ul>
+
+        <form id="contactForm" novalidate>
+            <h2>Formulario de Contacto</h2>
+            
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
+
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" name="correo" placeholder="Correo electrónico" required>
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="terminos" required>
+                <label for="terminos">Estoy de acuerdo con los <a href="#">términos y condiciones</a></label>
             </div>
 
-            <aside class="sidebar">
-                <div class="order-summary">
-                    <h3>Resumen del pedido</h3>
-
-                    <div class="summary-line">
-                        <span>Calcular envío</span>
-                        <span></span>
-                    </div>
-
-                    <div class="summary-total">
-                        <span>Total</span>
-                        <span id="carrito-total">$0.00</span>
-                    </div>
-
-                    <button class="btn-checkout" id="btnCheckout" disabled>Finalizar compra</button>
-                </div>
-            </aside>
-        </div>
-    </main>
-
-    <!-- Modal checkout-->
-    <div id="checkoutModal" class="modal modal-checkout">
-        <div class="modal-content-checkout">
-            <span id="cerrarCheckout" class="close">&times;</span>
-
-            <h2>Finalizar Compra</h2>
-
-            <h3>Datos del Envío</h3>
-            <div class="checkout-section">
-                <input type="text" id="env-nombre" placeholder="Nombre completo" required>
-                <input type="text" id="env-direccion" placeholder="Dirección completa" required>
-                <input type="text" id="env-ciudad" placeholder="Ciudad" required>
-                <input type="text" id="env-cp" placeholder="Código Postal" required>
-                
-                <select id="env-pais" required>
-                    <option value="">Selecciona tu país</option>
-                    <option value="México">México</option>
-                    <option value="Estados Unidos">Estados Unidos</option>
-                    <option value="España">España</option>
-                    <option value="Colombia">Colombia</option>
-                    <option value="Argentina">Argentina</option>
-                    <option value="Chile">Chile</option>
-                    <option value="Perú">Perú</option>
-                </select>
-                
-                <input type="text" id="env-telefono" placeholder="Teléfono (10 dígitos)" required>
-            </div>
-
-            <h3>Método de Pago</h3>
-            <select id="pago-metodo" required>
-                <option value="">Selecciona una opción</option>
-                <option value="tarjeta">💳 Tarjeta de Crédito/Débito</option>
-                <option value="transferencia">🏦 Transferencia Bancaria</option>
-                <option value="oxxo">🏪 OXXO</option>
-            </select>
-
-            <div id="form-tarjeta" class="metodo oculto">
-                <h4>Datos de la Tarjeta</h4>
-                <input type="text" id="tarjeta-num" placeholder="Número de tarjeta (16 dígitos)" maxlength="16" pattern="\d{16}">
-                <input type="text" id="tarjeta-titular" placeholder="Nombre del titular">
-                <div style="display: flex; gap: 10px;">
-                    <input type="text" id="tarjeta-fecha" placeholder="MM/AA" maxlength="5" pattern="\d{2}/\d{2}">
-                    <input type="text" id="tarjeta-cvv" placeholder="CVV (3 dígitos)" maxlength="3" pattern="\d{3}">
-                </div>
-            </div>
-
-            <div id="form-transferencia" class="metodo oculto">
-                <h4>Información para Transferencia</h4>
-                <p><strong>Banco:</strong> Banco BlockWorld S.A.</p>
-                <p><strong>CLABE:</strong> 123 456 789 000 111 222</p>
-                <p><strong>Beneficiario:</strong> BlockWorld Store</p>
-                <input type="text" id="trans-comprobante" placeholder="Nombre del titular que realizará la transferencia" required>
-                <small style="color: #666;">*Una vez realizada la transferencia, envía tu comprobante al correo: pagos@blockworld.com</small>
-            </div>
-
-            <div id="form-oxxo" class="metodo oculto">
-                <h4>Pago en OXXO</h4>
-                <p>Acude a tu OXXO más cercano y menciona que realizarás un pago de servicio.</p>
-                <p>Proporciona el siguiente código de pago:</p>
-                <div style="background: #f0f0f0; padding: 15px; text-align: center; border-radius: 5px; margin: 10px 0;">
-                    <h3 style="margin: 0; color: #d32f2f;" id="oxxo-code">0000 0000 0000 0000</h3>
-                </div>
-                <small style="color: #666;">*El código estará disponible por 72 horas</small>
-            </div>
-
-            <h3>Cupón de Descuento</h3>
-            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-                <input type="text" id="cupon-input" placeholder="Ingresa tu cupón (opcional)" style="width: 70%;"> 
-                <button id="btnAplicarCupon" class="btn-apply" style="flex-grow: 1;">Aplicar</button>
-            </div>
-
-            <div id="cupon-info" class="cupon-info" style="display: none; background: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
-            </div>
-
-            <button id="btnConfirmarCompra" class="btn-confirmar">
-                Confirmar y Procesar Compra
-            </button>
-        </div>
+            <button type="submit">Enviar</button>
+        </form>
     </div>
-
-
+</main>
+  
         <footer class="footer">
         <div class="footer-contenido">
 
@@ -290,6 +221,7 @@
 
         </div>
 
+        <!-- Sección de pagos -->
         <div class="footer-pagos">
             <p>Pagos 100% seguros con</p>
             <div class="footer-pagos-img">
@@ -361,10 +293,10 @@
         </div>
     </div>
 
-    <script src="productos.js"></script>
+    <script src="js/productos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="app.js"></script>
-    <script src="wishlist.js"></script>
-    <script src="accesibilidad.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/accesibilidad.js"></script>
 </body>
 </html>

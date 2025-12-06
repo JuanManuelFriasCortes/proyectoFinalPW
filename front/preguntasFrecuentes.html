@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos | BlockWorld</title>
+    <title>Nostros | BlockWorld</title>
     <link rel="icon" type="image/x-icon" href="imagenes/logo.ico">
-    <link rel="stylesheet" href="styles/estProductos.css">
+    <link rel="stylesheet" href="styles/estPreguntas.css">
     <style>
         .barra-superior {
             background: url("imagenes/fondoPest.jpeg") center/cover no-repeat;
@@ -37,26 +37,11 @@
         <div class="der">
             <button class="btn-vender">Panel Admin</button>
 
-            <a href="wishlist.html" class="grupo-fav" style="cursor: pointer; position: relative; text-decoration: none;">
-                 <img src="imagenes/libro.png" class="icono" alt="favoritos" title="Lista de Deseos">
-                <span id="wishlist-count" style="
-                    position: absolute;
-                    top: -5px;
-                    right: -5px;
-                    background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
-                    color: white;
-                    border-radius: 50%;
-                    min-width: 20px;
-                    height: 20px;
-                    display: none;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 11px;
-                    font-weight: bold;
-                    padding: 2px 5px;
-                    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-                ">0</span>
-            </a>
+            <div class="grupo-fav">
+                <a href="wishlist.html">
+                    <img src="imagenes/libro.png" class="icono" alt="favoritos">
+                </a>
+            </div>
 
             <div class="grupo-carrito">
                 <span id="cart-count" style="font-weight:bold; margin-left:4px;">0</span>
@@ -134,46 +119,51 @@
             </button>
         </div>
     </div>
-
     <main class="main-content">
-        <div class="main-container">
-            <div class="content-left">
-                <section class="filtro-section">
-                    <h2>Filtrar Productos</h2>
-                    <div class="filtros-contenido">
-                        <div>
-                            <label for="filtro-categoria" style="font-weight: bold;">Categoría:</label>
-                            <select id="filtro-categoria">
-                                <option value="todas">Todas</option>
-                                <option value="Technic">Technic</option>
-                                <option value="Ideas">Ideas</option>
-                                <option value="Marcas">Marcas</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label style="font-weight: bold;">Precio:</label>
-                            <input type="number" id="precio-min" placeholder="Min" style="width: 80px; padding: 8px;">
-                            <span>-</span>
-                            <input type="number" id="precio-max" placeholder="Max" style="width: 80px; padding: 8px;">
-                        </div>
-                        <div>
-                            <label style="font-weight: bold;">
-                                <input type="checkbox" id="filtro-ofertas">
-                                Solo disponibles
-                            </label>
-                        </div>
-                    </div>
-                </section>
-                <section class="novedades">
-                    <h2>Todos los Productos</h2>
-                    <div id="productos-container" class="products-grid">
-                        <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
-                            <p style="font-size: 18px; color: #666;">Cargando productos...</p>
-                        </div>
-                    </div>
-                </section>
-            </div>
+       <section class="faq">
+        <h2>Preguntas Frecuentes</h2>
+        <p class="faq__intro">¿Tienes dudas? Aquí respondemos las más comunes sobre tus pedidos y nuestra tienda.</p>
+
+        <div class="faq__item">
+            <button class="faq__question">¿En cuántos días hábiles llega mi pedido?</button>
+            <div class="faq__answer">Generalmente entre 7 y 14 días hábiles, dependiendo de tu ubicación.</div>
         </div>
+
+        <div class="faq__item">
+            <button class="faq__question">¿Qué pasa si mi pedido llega incompleto o dañado?</button>
+            <div class="faq__answer">Puedes reportarlo y te enviaremos las piezas faltantes o un reemplazo.</div>
+        </div>
+
+        <div class="faq__item">
+            <button class="faq__question">¿Qué métodos de pago aceptan?</button>
+            <div class="faq__answer">Tarjetas de crédito/débito.</div>
+        </div>
+
+        <div class="faq__item">
+            <button class="faq__question">¿Es seguro comprar en este sitio?</button>
+            <div class="faq__answer">Sí, usamos certificados SSL y pasarelas de pago confiables para proteger tus datos.</div>
+        </div>
+
+        <div class="faq__item">
+            <button class="faq__question">¿Puedo pagar a meses sin intereses?</button>
+            <div class="faq__answer">Sí, en compras mayores a cierto monto con tarjetas participantes.</div>
+        </div>
+
+        <div class="faq__item">
+            <button class="faq__question">¿Los sets son originales?</button>
+            <div class="faq__answer">Sí, todos nuestros productos cuentan con garantía de autenticidad.</div>
+        </div>
+
+        <div class="faq__item">
+            <button class="faq__question">¿Cada cuánto se actualizan los productos disponibles?</button>
+            <div class="faq__answer">Todas las semanas añadimos nuevos sets y piezas destacadas.</div>
+        </div>
+
+        <div class="faq__item">
+            <button class="faq__question">¿Dónde puedo comunicarme si tengo dudas?</button>
+            <div class="faq__answer">En la sección Contacto encontrarás correo, chat y teléfono de atención al cliente.</div>
+        </div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -205,9 +195,9 @@
 
             <div class="footer-social-logo">
                 <div class="footer-social">
-                    <a href="https://www.instagram.com/blockworld14?igsh=MXF5bXo0Mm9uNDhm" target="_blank"><img src="imagenes/instagram.png" alt="Instagram"></a>
-                    <a href="https://www.facebook.com/profile.php?id=61584811431929" target="_blank"><img src="imagenes/facebook.png" alt="Facebook"></a>
-                    <a href="https://pin.it/5NZEzK4X0" target="_blank"><img src="imagenes/pinterest.png" alt="Pinterest"></a>
+                    <a href="#"><img src="imagenes/instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="imagenes/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="imagenes/pinterest.png" alt="Pinterest"></a>
                 </div>
 
                 <div class="footer-logo-abajo">
@@ -279,7 +269,7 @@
                     <option value="Perú">Perú</option>
                 </select>
 
-                <button type="submit">👤➕ Registrarse</button>
+                <button type="submit">Registrarse</button>
             </form>
 
             <p class="modal-footer">
@@ -288,10 +278,20 @@
         </div>
     </div>
 
-    <script src="productos.js"></script>
+    <script>
+        const items = document.querySelectorAll('.faq__item');
+
+        items.forEach(item => {
+            const question = item.querySelector('.faq__question');
+            question.addEventListener('click', () => {
+            item.classList.toggle('active');
+            });
+        });
+    </script>
+
+    <script src="js/productos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="app.js"></script>
-    <script src="wishlist.js"></script>
-    <script src="accesibilidad.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/accesibilidad.js"></script>
 </body>
 </html>

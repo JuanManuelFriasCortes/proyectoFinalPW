@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nostros | BlockWorld</title>
+    <title>Productos | BlockWorld</title>
     <link rel="icon" type="image/x-icon" href="imagenes/logo.ico">
-    <link rel="stylesheet" href="styles/estNosotros.css">
+    <link rel="stylesheet" href="styles/estProductos.css">
     <style>
         .barra-superior {
             background: url("imagenes/fondoPest.jpeg") center/cover no-repeat;
@@ -21,7 +21,7 @@
     </style>
 </head>
 <body>
- 
+
         <header class="header-red">
         <div class="izq">
             <a href="index.html">
@@ -91,7 +91,7 @@
 
     <nav class="menu-inferior">
         <a href="index.html">Inicio</a>
-        <a href="productos.html">Productos</a>
+        <a href="nosotros.html">Nosotros</a>
         <a href="preguntasFrecuentes.html">Preguntas</a>
         <a href="contactanos.html">Contáctanos</a>
     </nav>
@@ -134,86 +134,46 @@
             </button>
         </div>
     </div>
-    <section class="hero">
-        <h1>Sobre Nosotros</h1>
-        <p>Construyendo sueños, creando historias, inspirando creatividad</p>
-    </section>
-    
+
     <main class="main-content">
-       <section class="nosotros">
-      <div class="nosotros__texto">
-        <h2>¿Quiénes somos?</h2>
-        <p>
-          En Block World somos una empresa que le apasiona la creatividad, la construcción y el juego inteligente. 
-          Diseñamos y comercializamos bloques de armado compatibles entre sí, pensados para estimular la 
-          imaginación, el pensamiento lógico y el trabajo en equipo en personas de todas las edades.
-        </p>
-        <p>
-          Aunque nuestros productos se inspiran en el universo de los bloques modulares, nuestra propuesta es única: 
-          ofrecemos sets originales, temáticos y accesibles, con piezas de alta calidad que permiten construir mundos 
-          propios, desde castillos, torres, autos, helicópteros, naves hasta bloques sin estructura para que eches
-          a volar tu imaginación.
-        </p>
-        <p>
-          Creemos que cada bloque es una oportunidad para contar una historia, resolver un reto o compartir una
-          experiencia. Por eso, en Block World no solo vendemos piezas: invitamos a construir sueños, aventuras y recuerdos.
-          Porque para nosotros, cada pieza es más que un bloque: es el inicio de una historia. 
-          Construye aventuras. Colecciona momentos.
-        </p>
-      </div>
-
-      <div class="nosotros__imagen">
-        <img src="imagenes/equipo.jpg" alt="Equipo BlockWorld" />
-      </div>
-    </section>
-
-    <section class="equipo">
-      <h2>Nuestro Equipo</h2>
-
-      <div class="equipo__grid">
-
-        <article class="miembro">
-          <img src="/front/imagenes/eliseo.jpg" alt="Eliseo Villalobos" class="miembro__foto" />
-          <h3 class="miembro__nombre">Eliseo Villalobos</h3>
-          <p class="miembro__bio">
-            Especialista en diseño de sets y construcción creativa. Apasionado por crear mundos que inspiren a niños y adultos.
-          </p>
-        </article>
-
-        <article class="miembro">
-          <img src="/front/imagenes/frias.jpg" alt="Juan Manuel Frias" class="miembro__foto" />
-          <h3 class="miembro__nombre">Juan Manuel Frias</h3>
-          <p class="miembro__bio">
-            Líder del equipo y empresa. Le encanta compartir ideas, conectar con usuarios y fomentar la creatividad.
-          </p>
-        </article>
-
-        <article class="miembro">
-          <img src="/front/imagenes/sara.jpg" alt="Sara Alexandra Chamorro" class="miembro__foto" />
-          <h3 class="miembro__nombre">Sara Alexandra Chamorro</h3>
-          <p class="miembro__bio">
-            Diseñadora visual y creadora de experiencias. Su misión es que cada set cuente una historia inolvidable.
-          </p>
-        </article>
-
-        <article class="miembro">
-          <img src="/front/imagenes/fer.jpg" alt="Maria Fernanda Resendiz" class="miembro__foto" />
-          <h3 class="miembro__nombre">Maria Fernanda Resendiz</h3>
-          <p class="miembro__bio">
-            Experta en contenido educativo y dinámicas de juego. Ama enseñar y aprender de cada constructor.
-          </p>
-        </article>
-
-        <article class="miembro">
-          <img src="/front/imagenes/miguel.jpg" alt="Miguel de Jesus Zavala" class="miembro__foto" />
-          <h3 class="miembro__nombre">Miguel de Jesus Zavala</h3>
-          <p class="miembro__bio">
-            Ingeniero de producto. Se asegura de que cada pieza encaje perfecto y dure toda la vida.
-          </p>
-        </article>
-
-      </div>
-    </section>
+        <div class="main-container">
+            <div class="content-left">
+                <section class="filtro-section">
+                    <h2>Filtrar Productos</h2>
+                    <div class="filtros-contenido">
+                        <div>
+                            <label for="filtro-categoria" style="font-weight: bold;">Categoría:</label>
+                            <select id="filtro-categoria">
+                                <option value="todas">Todas</option>
+                                <option value="Technic">Technic</option>
+                                <option value="Ideas">Ideas</option>
+                                <option value="Marcas">Marcas</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-weight: bold;">Precio:</label>
+                            <input type="number" id="precio-min" placeholder="Min" style="width: 80px; padding: 8px;">
+                            <span>-</span>
+                            <input type="number" id="precio-max" placeholder="Max" style="width: 80px; padding: 8px;">
+                        </div>
+                        <div>
+                            <label style="font-weight: bold;">
+                                <input type="checkbox" id="filtro-ofertas">
+                                Solo disponibles
+                            </label>
+                        </div>
+                    </div>
+                </section>
+                <section class="novedades">
+                    <h2>Todos los Productos</h2>
+                    <div id="productos-container" class="products-grid">
+                        <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                            <p style="font-size: 18px; color: #666;">Cargando productos...</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
     </main>
 
     <footer class="footer">
@@ -319,7 +279,7 @@
                     <option value="Perú">Perú</option>
                 </select>
 
-                <button type="submit">Registrarse</button>
+                <button type="submit">👤➕ Registrarse</button>
             </form>
 
             <p class="modal-footer">
@@ -328,11 +288,10 @@
         </div>
     </div>
 
-    <script src="productos.js"></script>
+    <script src="js/productos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="app.js"></script>
-    <script src="wishlist.js"></script>
-    <script src="accesibilidad.js"></script>
-
+    <script src="js/app.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/accesibilidad.js"></script>
 </body>
 </html>
