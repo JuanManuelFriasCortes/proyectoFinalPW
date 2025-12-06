@@ -1,6 +1,6 @@
 // front/admin.js
 
-const API_URL = 'https://proyectofinalpw-ny66.onrender.com';
+const API_URL = 'https://proyectofinalpw-ny66.onrender.com/api';
 
 // VARIABLES GLOBALES
 let productos = [];
